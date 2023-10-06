@@ -47,12 +47,16 @@
         userDataDiv.innerHTML = `
                     <table class="table table-striped">
                       <thead>
+                       <tr>
                         <th>Username</th>
                         <th>Email</th>
+                        </tr>
                       </thead>
                       <tbody>
-                        <td>${data.data.username}</td>
+                        <tr>
+                          <td>${data.data.username}</td>
                         <td>${data.data.email}</td>
+                        </tr>
                       </tbody>
                   </table>
               `;
