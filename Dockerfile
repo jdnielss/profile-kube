@@ -1,11 +1,11 @@
-# Use an official Nginx runtime as the base image
+# Use the official Nginx image as the base image
 FROM nginx:latest
 
-# Copy the HTML files from your local directory into the container's web root directory
-COPY . /usr/share/nginx/html
+# Copy your custom Nginx configuration file to the container
+COPY nginx.conf /etc/nginx/nginx.conf
 
-# Expose port 80 to allow external access
+# Expose the port Nginx is listening on (default is 80)
 EXPOSE 80
 
-# Start Nginx when the container runs
+# Start Nginx when the container starts
 CMD ["nginx", "-g", "daemon off;"]
