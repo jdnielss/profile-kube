@@ -29,6 +29,7 @@
 <body>
   <div class="container">
     <h1>Juan Daniel</h1>
+    <p id="data"></p>
     <div id="userData"></div> <!-- Create a div to display fetched data -->
   </div>
 
@@ -38,10 +39,18 @@
 
   <script>
     // Fetch data from the API
-    fetch('https://www.jdnielss.my.id/users')
+
+    fetch('https://www.jdnielss.my.id/api/users')
       .then(response => response.json())
       .then(data => {
-        console.log(data.data);
+        const paragraph = document.getElementById('data');
+
+        paragraph.innerHTML = data.data;
+      });
+
+    fetch('https://www.jdnielss.my.id/api/users')
+      .then(response => response.json())
+      .then(data => {
         // Display the data in a Bootstrap table
         const userDataDiv = document.getElementById('userData');
         const table = document.createElement('table');
@@ -50,14 +59,16 @@
         const tbody = document.createElement('tbody');
         thead.innerHTML = `
                   <tr>
+                      <th>#</th>
                       <th>Username</th>
                       <th>Email</th>
                   </tr>
               `;
         tbody.innerHTML = '';
-        data.data.forEach(user => {
+        data.data.forEach((user, index) => {
           tbody.innerHTML += `
                       <tr>
+                          <td>${index}</td>
                           <td>${user.username}</td>
                           <td>${user.email}</td>
                       </tr>
