@@ -41,12 +41,15 @@
     fetch('https://www.jdnielss.my.id/users')
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        console.log(data.data);
         // Display the data in a Bootstrap table
         const userDataDiv = document.getElementById('userData');
         userDataDiv.innerHTML = `
-                  <h1 class="text-center">User Data</h1>
-                  <table class="table table-md">
+                    <table class="table table-striped">
+                      <thead>
+                        <th>Username</th>
+                        <th>Email</th>
+                      </thead>
                       <tbody>
                           <tr>
                               <th>Name</th>
@@ -55,10 +58,6 @@
                           <tr>
                               <th>Email</th>
                               <td>${data.data.email}</td>
-                          </tr>
-                          <tr>
-                              <th>Phone</th>
-                              <td>${data.data.phone}</td>
                           </tr>
                       </tbody>
                   </table>
